@@ -571,8 +571,8 @@ class ManualFeedforwardTuner(val dvf: DriveViewFactory) : LinearOpMode() {
                         val v = if (pv.velocity == null) {
                             val lastPos = lastPositions[i]
                             lastPositions[i] = pv.position
-                            lastTimes[i].reset()
                             velEstimates[i].update((pv.position - lastPos) / lastTimes[i].seconds())
+                            lastTimes[i].reset()
                         } else {
                             pv.velocity.toDouble()
                         }
